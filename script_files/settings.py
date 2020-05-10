@@ -8,7 +8,7 @@ mqtt_username = "xxx"
 mqtt_password = "xxx"
 mqtt_base_topic = "domotica/sunmaster" # this is appended with /inverter_id for each inverter
 
-use_json = False # True publishes all data in one topic in a json string, False means each attribute is published as separate topic
+use_json = True # True publishes all data in one topic in a json string, False means each attribute is published as separate topic
 split_date_into_topics = False # True splits the date into /year/month/day topics, False publishes data as one topic: /year-month-day
 retain_daily_messages = True # True sends retain flag with mqtt messages containing daily production data for past 30 days
 
