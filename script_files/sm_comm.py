@@ -24,8 +24,6 @@
 #                                     *100  *100        *100        *100
 
 import datetime
-import sys
-import struct
 from settings import *
 
 class Inverter:
@@ -42,29 +40,29 @@ class Inverter:
         responses = Read(self._socket)
         for rs in responses:
             if (rs.type == 182):
-                self.values['dcv']            = int.from_bytes(rs.bytes[8:10],  byteorder='little', signed = False)
-                self.values['dci']            = int.from_bytes(rs.bytes[10:12], byteorder='little', signed = False)/100.00
-                self.values['freq']            = int.from_bytes(rs.bytes[12:14], byteorder='little', signed = False)/100.00
-                self.values['acv']            = int.from_bytes(rs.bytes[14:16], byteorder='little', signed = False)
-                self.values['aci']            = int.from_bytes(rs.bytes[16:18], byteorder='little', signed = False)/100.00
-                self.values['acp']            = int.from_bytes(rs.bytes[18:20], byteorder='little', signed = False)
+                self.values['dcv']          = int.from_bytes(rs.bytes[8:10],  byteorder='little', signed = False)
+                self.values['dci']          = int.from_bytes(rs.bytes[10:12], byteorder='little', signed = False)/100.00
+                self.values['freq']         = int.from_bytes(rs.bytes[12:14], byteorder='little', signed = False)/100.00
+                self.values['acv']          = int.from_bytes(rs.bytes[14:16], byteorder='little', signed = False)
+                self.values['aci']          = int.from_bytes(rs.bytes[16:18], byteorder='little', signed = False)/100.00
+                self.values['acp']          = int.from_bytes(rs.bytes[18:20], byteorder='little', signed = False)
                 self.values['totalpower']   = int.from_bytes(rs.bytes[20:23], byteorder='little', signed = False)/100.00
                 self.values['temp']            = rs.bytes[23]
                 self.values['totalruntime'] = int.from_bytes(rs.bytes[24:28], byteorder='little', signed = False)
-                self.values['errors']        = int.from_bytes(rs.bytes[6:8],   byteorder='little', signed = False)
+                self.values['errors']       = int.from_bytes(rs.bytes[6:8],   byteorder='little', signed = False)
                 
                 if (self.values['errors'] != 32768): # inverter error
                     Debug("Inverter error; " + ErrorDescr(self.values['errors']) +  "("+ str(self.values['errors']) + ")", 1)
-                    self.values['dcv']            = 0
-                    self.values['dci']            = 0
-                    self.values['freq']            = 0
-                    self.values['acv']            = 0
-                    self.values['aci']            = 0
-                    self.values['acp']            = 0
+                    self.values['dcv']          = 0
+                    self.values['dci']          = 0
+                    self.values['freq']         = 0
+                    self.values['acv']          = 0
+                    self.values['aci']          = 0
+                    self.values['acp']          = 0
                     self.values['totalpower']   = int.from_bytes(rs.bytes[20:23], byteorder='little', signed = False)/100.00
-                    self.values['temp']            = 0
+                    self.values['temp']         = 0
                     self.values['totalruntime'] = int.from_bytes(rs.bytes[24:28], byteorder='little', signed = False)
-                    self.values['errors']        = int.from_bytes(rs.bytes[6:8],   byteorder='little', signed = False)
+                    self.values['errors']       = int.from_bytes(rs.bytes[6:8],   byteorder='little', signed = False)
             else:
                 Debug("Response type does not match request B6", 1)
 

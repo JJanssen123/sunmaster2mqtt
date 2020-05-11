@@ -11,8 +11,6 @@
 #    Written in 2012 and 2020 by Jorg Janssen <http://www.zonnigdruten.nl/>
 
 import socket
-import struct
-import time
 import paho.mqtt.publish as publish
 import json
 from datetime import datetime, timedelta
