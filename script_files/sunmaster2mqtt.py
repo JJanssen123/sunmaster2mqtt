@@ -92,7 +92,7 @@ def main():
                     params = {}            
                     for v in i.dailyValues[0]:
                         params[v] = i.dailyValues[0][v] 
-                    date = datetime.now().strftime(date_format)                            
+                    date = datetime.datetime.now().strftime(date_format)                            
                     if (use_json):
                         mqtt_publish(mqtt_base_topic + '/' + inverter_id + '/' + date, json.dumps(params), True)
                     else:
@@ -106,14 +106,14 @@ def main():
                         f.close()
                     except:
                         last_date = ''                        
-                    current_date = datetime.now().strftime('%Y-%m-%d')
+                    current_date = datetime.datetime.now().strftime('%Y-%m-%d')
                     if(last_date != current_date):
                         for d in range(1,30): 
                             params = {} 
                             i.getDailyValues(d) 
                             for v in i.dailyValues[d]:
                                 params[v] = i.dailyValues[d][v]
-                            date = (datetime.now() - timedelta(d)).strftime(date_format)  
+                            date = (datetime.datetime.now() - timedelta(d)).strftime(date_format)  
                             if (use_json):
                                 mqtt_publish(mqtt_base_topic + '/' + inverter_id + '/' + date, json.dumps(params), retain_daily_messages)
                             else:
