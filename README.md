@@ -1,5 +1,5 @@
 # sunmaster2mqtt
-Python script for reading Mastervolt Sunmaster solar inverter data and publish data as mqtt messages
+Python script for reading Mastervolt Sunmaster solar inverter data and publish data as mqtt messages.
 
 To use this script you need a RS485 to TCP converter like <a target="_blank" href="https://nl.aliexpress.com/item/32514008468.html">this (ethernet)</a> or <a href="https://nl.aliexpress.com/item/4000133437266.html" target="_blank">this (wifi)</a>. Put the ip-address of this converter in settings.py.
 
@@ -7,7 +7,7 @@ Connect the RS485 output of the inverter to the TCP converter using a RJ45 conne
 
 You will need the Eclipse Paho MQTT Python client library, use pip for installation: **pip3 install paho-mqtt**
 
-The script returns the current running values of each connected inverter. Once per day it collects the last 30 daily production amounts. Alle values are sent as mqtt messages to your mqtt broker. In settings.py you can set the brokers address, the topic and some other mqtt stuff.
+The script returns the current running values of each connected inverter. Once per day it collects the last 30 daily production amounts. All values are sent as mqtt messages to your mqtt broker. In settings.py you can set the brokers address, the topic and some other mqtt stuff.
 
 The script is meant to run every minute (or 5) as a cronjob e.g. 
 
