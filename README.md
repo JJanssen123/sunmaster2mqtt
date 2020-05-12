@@ -9,6 +9,10 @@ You will need the Eclipse Paho MQTT Python client library, use pip for installat
 
 The script returns the current running values of each connected inverter. Once per day it collects the last 30 daily production amounts. Alle values are sent as mqtt messages to your mqtt broker. In settings.py you can set the brokers address, the topic and some other mqtt stuff.
 
-The script is meant to run every minute (or 5) as a cronjob e.g. * * * * * /usr/bin/python3 /home/pi/sunmaster2mqtt/sunmaster2mqtt.py > /home/pi/sunmaster2mqtt/cronlog.txt. Be careful running it every minute when you have more than one inverter; getting the 30 day production numbers takes about 40 seconds per inverter.
+The script is meant to run every minute (or 5) as a cronjob e.g. 
+
+* * * * * /usr/bin/python3 /home/pi/sunmaster2mqtt/sunmaster2mqtt.py > /home/pi/sunmaster2mqtt/cronlog.txt
+
+Be careful running it every minute when you have more than one inverter; getting the 30 day production numbers takes about 40 seconds per inverter.
 
 If you don't want to use mqtt, there's a <a target="_blank" href="https://github.com/kloknibor/MasterVoltXS">Home Assistant integration</a> by Robin Kolk based on this script.
