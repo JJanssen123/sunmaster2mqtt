@@ -11,7 +11,7 @@ The script returns the current running values of each connected inverter. Once p
 
 The script is meant to run every minute (or 5) as a cronjob e.g. 
 
-* * * * * /usr/bin/python3 /home/pi/sunmaster2mqtt/sunmaster2mqtt.py > /home/pi/sunmaster2mqtt/cronlog.txt
+\* \* \* \* \* /usr/bin/python3 /home/pi/sunmaster2mqtt/sunmaster2mqtt.py > /home/pi/sunmaster2mqtt/cronlog.txt
 
 Be careful running it every minute when you have more than one inverter; getting the 30 day production numbers takes about 40 seconds per inverter.
 
